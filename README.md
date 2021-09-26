@@ -2,8 +2,6 @@
 
 Template de Python 3 para proyectos base, utliza las librerias del repo de [este link](https://github.com/brianwolf/repo-python-libs)
 
-![docs](docs/img/python.png)
-
 ## :gear: Requisitos
 
 * python 3.9
