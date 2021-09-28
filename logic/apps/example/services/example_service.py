@@ -3,8 +3,8 @@ from datetime import datetime
 from typing import List
 from uuid import uuid4
 
-from logic.apps.models.example import Example
-from logic.apps.repositories import example_repository
+from logic.apps.example.models.example import Example
+from logic.apps.example.repositories import example_repository
 
 
 def get_example() -> Example:

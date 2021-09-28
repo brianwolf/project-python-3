@@ -1,14 +1,18 @@
 #!env/bin/python
-from logic.apps.config.logger import setup_loggers
-from logic.apps.config.rest import setup_rest
-from logic.apps.config.sqlite import setup_sqlite
-from logic.apps.config.variables import Vars, setup_vars
+from flask.app import Flask
+
+from logic.apps.admin.config.logger import setup_loggers
+from logic.apps.admin.config.rest import setup_rest
+from logic.apps.admin.config.sqlite import setup_sqlite
+from logic.apps.admin.config.variables import Vars, setup_vars
 from logic.libs.variables.variables import get_var
+
+app = Flask(__name__)
 
 setup_vars()
 setup_loggers()
 setup_sqlite()
-app = setup_rest(__name__)
+setup_rest(app)
 
 
 if __name__ == "__main__":

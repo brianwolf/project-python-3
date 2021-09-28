@@ -1,8 +1,9 @@
 from typing import List
 
-from logic.apps.models.example import Example
-from logic.apps.repositories.entities.example_entity import ExampleEntity
+from logic.apps.example.models.example import Example
 from logic.libs.sqliteAlchemy import sqliteAlchemy
+
+from .entities.example_entity import ExampleEntity
 
 
 def get_all() -> List[Example]:

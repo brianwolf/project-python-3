@@ -24,11 +24,7 @@ from werkzeug.exceptions import HTTPException
 def config_flask_app(app):
 
     app.config.setdefault('ERROR_INCLUDE_MESSAGE', False)
+    load_generic_error_handler(app)
+    config_encoders(app)
 
-    api = Api(app)
-
-    load_generic_error_handler(api)
-    config_encoders(api)
-
-
-    return api
+    return Api(app)

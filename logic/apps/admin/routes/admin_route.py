@@ -4,8 +4,8 @@ from io import BytesIO
 
 from flask import jsonify, send_file
 from flask_restplus import Resource
-from logic.apps.config.rest import api
-from logic.apps.config.variables import Vars
+from logic.apps.admin.config.rest import api
+from logic.apps.admin.config.variables import Vars
 from logic.libs.logger.logger import logger
 from logic.libs.variables.variables import all_vars, get_var
 

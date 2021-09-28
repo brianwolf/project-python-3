@@ -1,6 +1,8 @@
-from logic.apps.config.variables import Vars, get_var
 from logic.libs.reflection import reflection
 from logic.libs.sqliteAlchemy import sqliteAlchemy
+from logic.libs.variables.variables import get_var
+
+from .variables import Vars
 
 
 def setup_sqlite():

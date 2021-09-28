@@ -1,6 +1,6 @@
 from enum import Enum
 
-from logic.libs.variables.variables import Config, get_var, setup
+from logic.libs.variables.variables import Config, setup
 
 
 class Vars(Enum):

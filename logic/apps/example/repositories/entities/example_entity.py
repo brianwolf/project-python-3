@@ -1,6 +1,6 @@
 from uuid import UUID, uuid4
 
-from logic.apps.models.example import Example
+from logic.apps.example.models.example import Example
 from logic.libs.sqliteAlchemy import sqliteAlchemy
 from sqlalchemy import Column, DateTime, Float, Integer, String
 from sqlalchemy.ext.declarative import declarative_base

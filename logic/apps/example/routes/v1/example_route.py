@@ -1,9 +1,9 @@
 from flask import request
 from flask_restplus import Resource, fields
-from logic.apps.config.rest import api
-from logic.apps.errors.example_error import ExampleError
-from logic.apps.routes.v1.dtos import example_dto
-from logic.apps.services import example_service
+from logic.apps.admin.config.rest import api
+from logic.apps.example.errors.example_error import ExampleError
+from logic.apps.example.routes.v1.dtos import example_dto
+from logic.apps.example.services import example_service
 from logic.libs.exception.exception import AppException
 
 name_space = api.namespace('api/v1/examples', description='Ejemplos')

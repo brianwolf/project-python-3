@@ -1,6 +1,7 @@
-from logic.apps.config.variables import Vars
 from logic.libs.logger.logger import Config, setup
 from logic.libs.variables.variables import get_var
+
+from .variables import Vars
 
 
 def setup_loggers():
