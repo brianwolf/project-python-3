@@ -12,8 +12,14 @@
 ## :tada: Uso
 
 ```bash
-# Levantar el ambiente
-make i
+# Creacion del virtual env
+virtualenv -p python3.9 env
+
+# Activar el virtual env
+. env/bin/activate
+
+# Instalacion de los requerimientos
+pip install -r requirements.txt
 
 # Ejecutar
 python app.py
