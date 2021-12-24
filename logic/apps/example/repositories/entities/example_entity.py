@@ -1,4 +1,4 @@
-from uuid import UUID, uuid4
+from uuid import UUID
 
 from logic.apps.example.models.example import Example
 from logic.libs.sqliteAlchemy import sqliteAlchemy

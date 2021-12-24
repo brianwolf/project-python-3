@@ -15,4 +15,4 @@ def setup_sqlite():
 
     sqliteAlchemy.create_engine()
 
-    reflection.load_modules_by_path('logic/apps/repositories/entities')
+    reflection.load_modules_by_regex_path('logic/apps/*/repositories/entities')
