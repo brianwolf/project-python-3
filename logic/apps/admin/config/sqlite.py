@@ -1,18 +1,16 @@
 from pathlib import Path
 
-from logic.libs.reflection import reflection
-from logic.libs.sqliteAlchemy import sqliteAlchemy
-from logic.libs.variables.variables import get_var
+from logic.libs.sqliteAlchemy.sqliteAlchemy import Config, setup
 
 from .variables import Vars
 
 
 def setup_sqlite():
 
-    sqliteAlchemy.setup(
-        url=f'{Path.home()}/.base/db/sqlite.db',
-        echo=bool(get_var(Vars.DB_SQLITE_LOGS)))
-
-    sqliteAlchemy.create_engine()
-
-    reflection.load_modules_by_regex_path('logic/apps/*/repositories/entities')
+    setup(
+        Config(
+            url=f'{Path.home()}/.base/db/sqlite.db',
+            echo=False,
+            path='logic/apps/*/repositories/entities'
+        )
+    )

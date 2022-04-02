@@ -3,12 +3,11 @@ from uuid import UUID
 from logic.apps.example.models.example import Example
 from logic.libs.sqliteAlchemy import sqliteAlchemy
 from sqlalchemy import Column, DateTime, Float, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
 
-Base = declarative_base()
+Entity = sqliteAlchemy.get_entity_class()
 
 
-class ExampleEntity(Base):
+class ExampleEntity(Entity):
     __tablename__ = 'examples'
 
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=True)
@@ -38,6 +37,3 @@ class ExampleEntity(Base):
             double=m.double,
             uuid=str(m.uuid)
         )
-
-
-Base.metadata.create_all(sqliteAlchemy.get_engine())

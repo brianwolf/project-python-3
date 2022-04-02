@@ -17,5 +17,6 @@ def setup_vars():
         Config(
             file_path='variables.yaml',
             hiden_vars=['DB_SQLITE_PATH'],
-            enum_vars=Vars)
+            enum_vars=Vars
+        )
     )
