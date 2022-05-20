@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "60ac5f70-ee6c-4ea5-ae1d-810f9b584420",
+		"_postman_id": "89190cbb-da38-4beb-a04d-b38fda4bb728",
 		"name": "base-v0.1.0",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -20,7 +20,6 @@
 										{
 											"listen": "test",
 											"script": {
-												"id": "e67203de-a8c2-47e7-b088-b0d8dc2572c1",
 												"exec": [
 													"var jsonData = JSON.parse(responseBody);",
 													"pm.collectionVariables.set(\"token\", jsonData.token);"
@@ -61,14 +60,15 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{url}}/api/v1/examples",
+											"raw": "{{url}}/api/v1/examples/all",
 											"host": [
 												"{{url}}"
 											],
 											"path": [
 												"api",
 												"v1",
-												"examples"
+												"examples",
+												"all"
 											]
 										}
 									},
@@ -116,20 +116,15 @@
 									},
 									"response": []
 								}
-							],
-							"protocolProfileBehavior": {},
-							"_postman_isSubFolder": true
+							]
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				}
 			],
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "0a85c7bb-dad4-40c2-8143-4fa1d192aa92",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -139,15 +134,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "82e6f58a-c8ae-426a-9d78-1bbc8bcc396c",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "app",
@@ -158,12 +151,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/alive",
+							"raw": "{{url}}",
 							"host": [
 								"{{url}}"
-							],
-							"path": [
-								"alive"
 							]
 						}
 					},
@@ -191,7 +181,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "b100c888-72ec-4a2a-8627-35faf4bb4eb8",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -201,22 +190,19 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "a1c41125-0267-467b-92c8-14e6e86ace5e",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "f1f3c5d7-f59e-40dc-bdda-102780313b49",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -226,7 +212,6 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "e7c14948-6ed9-4afe-aadf-edac937bcdce",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -236,30 +221,24 @@
 	],
 	"variable": [
 		{
-			"id": "4a831255-0ce8-48eb-94ba-83b1f5f8d181",
 			"key": "url",
 			"value": "http://localhost:5000"
 		},
 		{
-			"id": "c49e9758-7e22-4725-881a-e84b28ba91cb",
 			"key": "token",
 			"value": ""
 		},
 		{
-			"id": "dc9e7f98-49bb-4f12-b1da-8d4c3345cd43",
 			"key": "id_descuento_ejemplo",
 			"value": ""
 		},
 		{
-			"id": "ee548508-9f5b-4322-8912-4a9519ed3728",
 			"key": "id_descuento_100_pe",
 			"value": ""
 		},
 		{
-			"id": "9a5064f9-9adb-458f-896d-0c5ab8678562",
 			"key": "id_descuento_10_por",
 			"value": ""
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

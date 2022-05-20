@@ -15,7 +15,7 @@ class Vars(Enum):
 def setup_vars():
     setup(
         Config(
-            file_path='variables.yaml',
+            file_path='logic/resources/variables.yaml',
             hiden_vars=['DB_SQLITE_PATH'],
             enum_vars=Vars
         )

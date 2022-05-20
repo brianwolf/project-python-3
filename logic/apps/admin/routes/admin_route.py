@@ -25,11 +25,11 @@ def alive():
 @blue_print.route('/postman')
 def get_postman():
     postman_files = sorted([
-        f for f in os.listdir(os.getcwd())
+        f for f in os.listdir(os.getcwd() + '/logic/resources')
         if str(f).endswith('.postman_collection.json')
     ], reverse=True)
 
-    collection_dir = next(iter(postman_files), None)
+    collection_dir = 'logic/resources/' + next(iter(postman_files), None)
 
     return send_file(BytesIO(open(collection_dir, 'rb').read()),
                      mimetype='application/octet-stream',
