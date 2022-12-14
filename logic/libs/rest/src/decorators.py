@@ -1,30 +1,34 @@
-from flask import Flask
-from logic.libs.exception.exception import AppException, UnknownException
-from logic.libs.logger.logger import logger
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from werkzeug.exceptions import HTTPException
 
+from logic.libs.exception.exception import AppException, UnknownException
+from logic.libs.logger.logger import logger
+from fastapi.responses import JSONResponse
 
-def add_decorators(app: Flask):
+
+def add_decorators(app: FastAPI):
     """
     Carga el handler de error basico para manejo de AppExceptions y excepciones comunes
     """
-    @app.errorhandler(HTTPException)
-    def handle_exception(httpe):
-        return '', httpe.code
+    @app.exception_handler(HTTPException)
+    def handle_exception(request, httpe):
+        return JSONResponse('', httpe.code)
 
-    @app.errorhandler(AppException)
-    def handle_business_exception(ae: AppException):
+    @app.exception_handler(AppException)
+    def handle_business_exception(request, ae: AppException):
         logger().warning(ae.to_json())
-        return ae.to_json(), 409
+        return JSONResponse(ae.to_json(), 409)
 
-    @app.errorhandler(Exception)
-    def handle_exception(e: Exception):
+    @app.exception_handler(Exception)
+    def handle_exception(request, e: Exception):
         logger().exception(e)
-        return UnknownException(e).to_json(), 500
+        return JSONResponse(UnknownException(e).to_json(), 500)
 
-    @app.after_request
-    def apply_headers(response):
-        response.headers["Access-Control-Allow-Origin"] = "*"
-        response.headers["Access-Control-Allow-Headers"] = "*"
-        response.headers["Access-Control-Allow-Methods"] = "*"
-        return response
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )

@@ -23,7 +23,6 @@ class Config:
     """
     file_path: str
     hiden_vars: List[str]
-    enum_vars: Enum
 
 
 def setup(cfg: Config):
@@ -34,16 +33,18 @@ def setup(cfg: Config):
     """
     config.DICT_VARS.update(make_vars_dict(cfg.file_path))
     config.HIDEN_VARS.extend(cfg.hiden_vars)
-    config.ENUMS_LIST.extend(cfg.enum_vars)
 
 
-def get_var(var: Enum) -> str:
+def get_var(var: str | Enum) -> str:
     """
     Obtiene el valor de la variable de entorno correspondiente, en caso de no obtenerla,
     la saca del diccionario de variables predefinidas
     """
-    default_value = config.DICT_VARS.get(var.value)
-    return os.environ.get(var.value, default_value)
+    if isinstance(var, Enum):
+        var = var.value
+
+    default_value = config.DICT_VARS.get(var)
+    return os.environ.get(var, default_value)
 
 
 def all_vars() -> Dict[str, str]:
@@ -51,7 +52,7 @@ def all_vars() -> Dict[str, str]:
     Devuelve el mapa de variables con sus valores instanciados y filtrados por la lista de no mostrados
     """
     return {
-        key.value: get_var(key)
-        for key in config.ENUMS_LIST
-        if key.value not in config.HIDEN_VARS
+        key: get_var(key)
+        for key in config.DICT_VARS
+        if key not in config.HIDEN_VARS
     }

@@ -1,1 +1,1 @@
-_LOGGERS = {}
+_LOGGER = None
