@@ -9,7 +9,7 @@ from logic.apps.admin.config.sqlite import setup_sqlite
 from logic.apps.admin.config.variables import Vars, setup_vars
 from logic.libs.variables.variables import get_var
 
-app = FastAPI()
+app = FastAPI(title='Example API', description='Example python project API')
 
 setup_vars()
 setup_loggers()
@@ -18,5 +18,8 @@ setup_rest(app)
 
 
 if __name__ == '__main__':
-    uvicorn.run(app, port=int(get_var(Vars.PYTHON_PORT)),
-                host=get_var(Vars.PYTHON_HOST))
+    uvicorn.run(
+        app,
+        port=int(get_var(Vars.PYTHON_PORT)),
+        host=get_var(Vars.PYTHON_HOST)
+    )

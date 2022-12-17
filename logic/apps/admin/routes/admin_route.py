@@ -9,22 +9,22 @@ from logic.apps.admin.config.variables import Vars
 from logic.libs.logger.logger import logger
 from logic.libs.variables.variables import all_vars, get_var
 
-apirouter = APIRouter(prefix='')
+apirouter = APIRouter(prefix='', tags=['Admin'])
 
 
-@apirouter.get('/vars')
+@apirouter.get('/vars', response_model=dict)
 def get_vars():
     return JSONResponse(all_vars())
 
 
-@apirouter.get('/')
+@apirouter.get('/', response_model=dict)
 def alive():
     version = get_var(Vars.VERSION)
     logger().info(f'Version: {version}')
     return JSONResponse({'version': version})
 
 
-@apirouter.get('/postman')
+@apirouter.get('/postman', response_model=bytes)
 def get_postman():
 
     postman_files = sorted([

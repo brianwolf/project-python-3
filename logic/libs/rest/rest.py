@@ -1,7 +1,7 @@
 """
 Rest
 ----
-1.0.0
+2.0.0
 
 Dependencias:
 * logger
@@ -15,17 +15,13 @@ from fastapi import FastAPI
 
 from logic.libs.reflection import reflection
 from logic.libs.rest.src.decorators import add_decorators
-from logic.libs.rest.src.json import config_encoders
 
 
 def setup(app, path) -> FastAPI:
     '''
     Configura la app de FastAPI
     '''
-    # app.config.setdefault('ERROR_INCLUDE_MESSAGE', False)
     add_decorators(app)
-    config_encoders(app)
-
     load_routes_by_regex_path(app, path)
 
     return app
