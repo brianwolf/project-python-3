@@ -1,20 +1,15 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from werkzeug.exceptions import HTTPException
+from fastapi.responses import JSONResponse
 
 from logic.libs.exception.exception import AppException, UnknownException
 from logic.libs.logger.logger import logger
-from fastapi.responses import JSONResponse
 
 
 def add_decorators(app: FastAPI):
     """
     Carga el handler de error basico para manejo de AppExceptions y excepciones comunes
     """
-    @app.exception_handler(HTTPException)
-    def handle_exception(request, httpe):
-        return JSONResponse('', httpe.code)
-
     @app.exception_handler(AppException)
     def handle_business_exception(request, ae: AppException):
         logger().warning(ae.to_json())

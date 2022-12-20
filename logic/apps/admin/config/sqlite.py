@@ -9,6 +9,6 @@ def setup_sqlite():
         Config(
             url=get_var(Vars.DB_SQLITE_PATH),
             echo=bool(get_var(Vars.DB_SQLITE_LOGS)),
-            entities_path='logic/apps/*/entity.py'
+            entities_path='logic/apps/*/entity.*'
         )
     )

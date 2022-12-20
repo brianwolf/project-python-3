@@ -1,5 +1,4 @@
 #!env/bin/python
-# from flask.app import Flask
 import uvicorn
 from fastapi import FastAPI
 

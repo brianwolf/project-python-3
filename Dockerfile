@@ -13,7 +13,7 @@ RUN	rm -fr dist/env/
 
 # EXECUTION
 # ---------------------------------------------
-FROM python:3.10-alpine
+FROM python:3.10-slim
 
 WORKDIR /home/src
 
@@ -21,7 +21,7 @@ ARG ARG_VERSION=local
 
 ENV VERSION=${ARG_VERSION}
 ENV PYTHON_HOST=0.0.0.0
-ENV PYTHON_PORT=80
+ENV PYTHON_PORT=5000
 ENV TZ America/Argentina/Buenos_Aires
 
 COPY requirements.txt ./
@@ -29,11 +29,10 @@ RUN pip install -r requirements.txt --upgrade pip
 RUN rm -fr requirements.txt
 
 COPY --from=compiler /home/src/dist/ ./
-COPY logic/resources/ ./
+COPY logic/resources/ logic/resources/
 
 CMD uvicorn \
     --host ${PYTHON_HOST} \
     --port ${PYTHON_PORT} \
     --workers=1 \
-    --threads=5 \
     app:app
