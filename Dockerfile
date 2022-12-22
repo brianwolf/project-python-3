@@ -13,7 +13,7 @@ RUN rm -fr dist/repo_modules_default
 
 # EXECUTION
 # ---------------------------------------------
-FROM python:3.9-alpine3.14
+FROM python:3.9-slim
 
 WORKDIR /home/src
 
@@ -35,6 +35,5 @@ RUN pip install -r requirements.txt --upgrade pip
 RUN rm -fr requirements.txt
 
 COPY --from=compiler /home/src/dist/ ./
-COPY *.json ./
-COPY variables.yaml ./
+COPY logic/resources/ logic/resources/
 
