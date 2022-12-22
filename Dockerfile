@@ -22,6 +22,7 @@ ARG ARG_VERSION=local
 ENV VERSION=${ARG_VERSION}
 ENV PYTHON_HOST=0.0.0.0
 ENV PYTHON_PORT=5000
+ENV WORKERS=1
 ENV TZ America/Argentina/Buenos_Aires
 
 COPY requirements.txt ./
@@ -34,5 +35,5 @@ COPY logic/resources/ logic/resources/
 CMD uvicorn \
     --host ${PYTHON_HOST} \
     --port ${PYTHON_PORT} \
-    --workers=1 \
+    --workers=${WORKERS} \
     app:app
