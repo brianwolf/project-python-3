@@ -12,8 +12,10 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Dict, List
 
-from logic.libs.variables.src import config
 from logic.libs.variables.src.file import make_vars_dict
+
+DICT_VARS: Dict[str, str] = {}
+HIDEN_VARS: List[str] = []
 
 
 @dataclass
@@ -31,8 +33,10 @@ def setup(cfg: Config):
 
     - configs -> lista de objetos de configuracion
     """
-    config.DICT_VARS.update(make_vars_dict(cfg.file_path))
-    config.HIDEN_VARS.extend(cfg.hiden_vars)
+    global DICT_VARS, HIDEN_VARS
+
+    DICT_VARS.update(make_vars_dict(cfg.file_path))
+    HIDEN_VARS.extend(cfg.hiden_vars)
 
 
 def get_var(var: str | Enum) -> str:
@@ -43,7 +47,7 @@ def get_var(var: str | Enum) -> str:
     if isinstance(var, Enum):
         var = var.value
 
-    default_value = config.DICT_VARS.get(var)
+    default_value = DICT_VARS.get(var)
     return os.environ.get(var, default_value)
 
 
@@ -53,6 +57,6 @@ def all_vars() -> Dict[str, str]:
     """
     return {
         key: get_var(key)
-        for key in config.DICT_VARS
-        if key not in config.HIDEN_VARS
+        for key in DICT_VARS
+        if key not in HIDEN_VARS
     }
