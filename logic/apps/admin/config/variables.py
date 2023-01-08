@@ -9,14 +9,15 @@ class Vars(Enum):
     PYTHON_PORT = 'PYTHON_PORT'
     LOGS_LEVEL = 'LOGS_LEVEL'
     LOGS_BACKUPS = 'LOGS_BACKUPS'
+    LOGS_PATH = 'LOGS_PATH'
     DB_SQLITE_LOGS = 'DB_SQLITE_LOGS'
+    DB_SQLITE_PATH = 'DB_SQLITE_PATH'
 
 
 def setup_vars():
     setup(
         Config(
             file_path='logic/resources/variables.yaml',
-            hiden_vars=['DB_SQLITE_PATH'],
-            enum_vars=Vars
+            hiden_vars=['DB_SQLITE_PATH']
         )
     )

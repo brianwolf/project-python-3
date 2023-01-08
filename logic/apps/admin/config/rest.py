@@ -1,7 +1,10 @@
-from flask import Flask
+
+from fastapi import FastAPI
+
 from logic.libs.rest.rest import setup
 
 
-def setup_rest(app: Flask) -> Flask:
+def setup_rest(app: FastAPI) -> FastAPI:
 
-    setup(app, 'logic/apps/*/routes')
+    setup(app, 'logic/apps/admin/routes')
+    setup(app, 'logic/apps/*/route.*')
