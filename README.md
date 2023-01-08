@@ -1,4 +1,4 @@
-# :card_index_dividers: project-python-39
+# :card_index_dividers: project-python-3
 
 > Template de Python 3
 
@@ -6,14 +6,14 @@
 
 ## :gear: Requisitos
 
-* python 3.9
+* python 3
 * virtualenv
 
 ## :tada: Uso
 
 ```bash
 # Creacion del virtual env
-virtualenv -p python3.9 env
+virtualenv -p python3 env
 
 # Activar el virtual env
 . env/bin/activate

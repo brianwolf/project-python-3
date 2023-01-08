@@ -20,7 +20,7 @@ def get_vars():
 @apirouter.get('/', response_model=dict)
 def alive():
     version = get_var(Vars.VERSION)
-    logger().info(f'Version: {version}')
+    logger.info(f'Version: {version}')
     return JSONResponse({'version': version})
 
 
