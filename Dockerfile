@@ -1,9 +1,11 @@
+# ---------------------------------------------
 # COMPILER
 # ---------------------------------------------
 FROM python:3.10-slim as compiler
 
-WORKDIR /home/src
-COPY . .
+WORKDIR /home
+COPY app.py .
+COPY logic ./logic
 
 RUN pip install compile --upgrade pip
 
@@ -11,11 +13,12 @@ RUN	python -m compile -b -f -o dist/ .
 RUN	rm -fr dist/env/
 
 
-# EXECUTION
+# ---------------------------------------------
+# RUNNER
 # ---------------------------------------------
 FROM python:3.10-slim
 
-WORKDIR /home/src
+WORKDIR /home/dist
 
 ARG ARG_VERSION=local
 
@@ -29,8 +32,8 @@ COPY requirements.txt ./
 RUN pip install -r requirements.txt --upgrade pip
 RUN rm -fr requirements.txt
 
-COPY --from=compiler /home/src/dist/ ./
-COPY logic/resources/ logic/resources/
+COPY --from=compiler /home/dist/ .
+COPY logic/resources logic/resources
 
 CMD uvicorn \
     --host ${PYTHON_HOST} \
