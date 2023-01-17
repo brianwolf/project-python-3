@@ -1,7 +1,7 @@
 PyYAML==5.3.1
 requests==2.26.0
 SQLAlchemy==1.4.27
-pyinstaller==4.5.1
+pyinstaller==4.10
 uvicorn==0.20.0
 compile==1.0.3
 autopep8==2.0.0
