@@ -1,8 +1,8 @@
-# :card_index_dividers: project-python-3
+# :card_index_dividers: project-python3-fastapi
 
-> Template de Python 3
+> Template de Python 3 con fastapi
 
-![alt](img/base.png)
+![alt](img/base.webp)
 
 ## :gear: Requisitos
 
