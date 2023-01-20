@@ -16,3 +16,16 @@ push p:
 
 run r:
 	docker run -it --rm -p 5000:5000 docker.io/brianwolf94/python-example:$(VERSION)
+
+
+package pk:
+	rm -fr build dist *.spec
+	
+	pyinstaller \
+		--add-data "logic/resources:logic/resources" \
+		--add-binary "logic:logic" \
+		-n example \
+		--onefile app.py 
+	
+	mv dist/example example
+	rm -fr build dist *.spec
