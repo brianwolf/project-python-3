@@ -6,7 +6,7 @@ from fastapi.responses import JSONResponse
 from starlette.responses import Response
 
 from logic.apps.admin.config.variables import Vars
-from logic.libs.logger.logger import logger
+from logic.libs.logger.logger import log
 from logic.libs.variables.variables import all_vars, get_var
 
 apirouter = APIRouter(prefix='', tags=['Admin'])
@@ -20,7 +20,7 @@ def get_vars():
 @apirouter.get('/', response_model=dict)
 def alive():
     version = get_var(Vars.VERSION)
-    logger.info(f'Version: {version}')
+    log.info(f'Version: {version}')
     return JSONResponse({'version': version})
 
 

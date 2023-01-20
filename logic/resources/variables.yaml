@@ -3,6 +3,6 @@ PYTHON_HOST: localhost
 PYTHON_PORT: 5000
 LOGS_LEVEL: INFO
 LOGS_BACKUPS: 3
-LOGS_PATH: /tmp/base/logs.log
+LOGS_PATH: /tmp/python3-demo/logs.log
 DB_SQLITE_LOGS: False
-DB_SQLITE_PATH: /tmp/base/db.db
+DB_SQLITE_PATH: /tmp/python3-demo/sqlite.db
